@@ -28,7 +28,7 @@ module API
         get '/' do
           @message_boards = MessageBoard.all
           # 定義したエンティティはAPI側で指定する。
-          present @message_boards, with: Entity::V2::MessageBoardEntity
+          present @message_boards, with: Entity::V2::MessageBoardsEntity
         end
 
         desc 'POST /api/v2/message_boards'
@@ -46,7 +46,7 @@ module API
         end
         get '/:id' do
           set_message_board
-          present @message_board, with: Entity::V2::MessageBoardEntity
+          present @message_board, with: Entity::V2::MessageBoardsEntity
         end
 
         desc 'PUT /api/v2/message_boards/:id'

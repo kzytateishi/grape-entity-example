@@ -42,7 +42,7 @@ module API
             get '/' do
               set_message_board
               @comments = @message_board.comments
-              present @comments, with: Entity::V1::CommentEntity
+              present @comments, with: Entity::V1::CommentsEntity
             end
 
             desc 'POST /api/v1/message_boards/:message_board_id/comments'
