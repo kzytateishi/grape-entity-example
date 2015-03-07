@@ -1,6 +1,6 @@
 module Entity
   module V2
-    class MessageBoardEntity < Grape::Entity
+    class MessageBoardsEntity < Grape::Entity
       # {"message_boards":[]}
       # {"message_board":{} }
       # というJSON出力になります。
@@ -13,7 +13,7 @@ module Entity
       end
 
       # 他のEntityの定義を使うことができる。
-      expose :comments, using: 'Entity::V2::CommentEntity'
+      expose :comments, using: 'Entity::V2::CommentsEntity'
 
       expose(:comment_count) do |message_board|
         message_board.comments.count(:id)

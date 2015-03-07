@@ -1,6 +1,6 @@
 module Entity
   module V2
-    class CommentEntity < Grape::Entity
+    class CommentsEntity < Grape::Entity
       # {"comments":[]}
       # というJSON出力になります。
       root 'comments'
