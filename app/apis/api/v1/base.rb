@@ -4,7 +4,7 @@ module API
       format :json
       default_format :json
 
-      prefix :api # /apiというパスになる
+      prefix 'api' # /apiというパスになる
       version 'v1', using: :path # /api/v1というパスになる
 
       rescue_from ActiveRecord::RecordNotFound do |e|
@@ -16,7 +16,11 @@ module API
       end
 
       rescue_from :all do |e|
+        if Rails.env.development?
           raise e
+        else
+          rack_response({ message: e.message, status: 500 }.to_json, 500)
+        end
       end
 
       mount V1::MessageBoards
